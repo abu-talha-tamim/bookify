@@ -127,3 +127,63 @@
     @apply font-sans;
   }
 }
+
+@layer utilities {
+  .library-hero-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 px-8 py-12 max-w-7xl mx-auto;
+  }
+
+  /* Book Card Styling */
+  .book-card {
+    @apply relative overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .book-card-cover-wrapper {
+    @apply relative aspect-[2/3] w-full overflow-hidden;
+  }
+
+  .book-card-overlay {
+    @apply absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10;
+  }
+
+  .book-card-info {
+    @apply p-4;
+  }
+
+  .book-card-title {
+    @apply text-lg font-bold text-[#212a3b] line-clamp-1 font-(family-name:--font-ibm-plex-serif);
+  }
+
+  .book-card-author {
+    @apply text-sm text-[#3d485e] line-clamp-1;
+  }
+
+  /* Upload Form Styling */
+  .new-book-wrapper {
+    @apply max-w-3xl mx-auto py-12 px-6 bg-[#fbf8f1] rounded-[32px] shadow-sm border border-[#e5e7eb]/50 mt-12;
+  }
+
+  .form-label {
+    @apply text-lg font-semibold text-[#212a3b] font-(family-name:--font-ibm-plex-serif);
+  }
+
+  .form-input {
+    @apply h-14 bg-white border-[#e5e7eb] rounded-xl focus:ring-[#663820] focus:border-[#663820] text-lg px-4;
+  }
+
+  .upload-dropzone {
+    @apply relative border-2 border-dashed border-[#d1d5db] rounded-2xl p-10 flex flex-col items-center justify-center transition-all cursor-pointer hover:border-[#663820] hover:bg-[#663820]/5;
+  }
+
+  .voice-selector-option {
+    @apply p-4 border-2 border-[#e5e7eb] rounded-xl cursor-pointer transition-all hover:border-[#663820]/30;
+  }
+
+  .voice-selector-option-selected {
+    @apply border-[#663820] bg-[#663820]/5 ring-1 ring-[#663820];
+  }
+
+  .form-btn {
+    @apply h-16 w-full bg-[#663820] hover:bg-[#4d2a18] text-white rounded-2xl text-xl font-bold font-(family-name:--font-ibm-plex-serif) transition-all shadow-lg;
+  }
+}
