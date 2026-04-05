@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, IBM_Plex_Serif, Mona_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navber from "@/components/Navber";
+import { Toaster } from "@/components/ui/sonner";
 
 const ibmPlexSans = IBM_Plex_Serif({
   variable: "--font-ibm-plex-serif",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <ClerkProvider>
           <Navber />
           {children}
+          <Toaster/>
         </ClerkProvider>
       </body>
     </html>

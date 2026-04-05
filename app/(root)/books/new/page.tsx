@@ -1,5 +1,5 @@
-import UplodForm from '@/components/UplodForm'
-import React from 'react'
+import UploadForm from '@/components/UploadForm'
+
 
 const page = () => {
   return (
@@ -8,7 +8,7 @@ const page = () => {
         <section className='flex flix-col gap-5'>
         <h1 className='text-2xl font-bold'>Add A New Book</h1>
             </section>
-            <UplodForm />
+            <UploadForm />
          </div>
     </main>
   )
