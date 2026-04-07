@@ -1,7 +1,9 @@
 import UploadForm from '@/components/UploadForm'
 
 
-const page = () => {
+
+const page =() => {
+ 
   return (
     <main className='wrapper container'> 
     <div className='mx-auto max-w-180 space-y-10'>

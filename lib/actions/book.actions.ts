@@ -1,3 +1,5 @@
+"use server";
+
 import Book from "@/database/models/book.model";
 import { connectToDatabase } from "@/database/mongoose";
 import { CreateBook, TextSegment } from "@/types";

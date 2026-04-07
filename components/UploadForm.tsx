@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FileUp, ImagePlus, X, Loader2, Upload } from "lucide-react";
+import { FileUp, ImagePlus, X, Loader2 } from "lucide-react";
 import { UploadSchema } from "@/lib/zod";
 import { BookUploadFormValues } from "@/types";
 import { voiceOptions, voiceCategories } from "@/lib/constants";
@@ -62,7 +62,7 @@ const UploadForm = () => {
             }
 
             const fileTitle = data.title.replace(/\s+/g, '-').toLowerCase();
-            const pdfFile = data.pdfFile;
+            const pdfFile = data.file[0];
 
             const parsedPDF = await parsePDFFile(pdfFile);
 
@@ -71,7 +71,7 @@ const UploadForm = () => {
                 return;
             }
 
-            const uploadedPdfBlob = await Upload(fileTitle, pdfFile, {
+            const uploadedPdfBlob = await upload(fileTitle, pdfFile, {
                 access: 'public',
                 handleUploadUrl: '/api/upload',
                 contentType: 'application/pdf'
@@ -79,8 +79,8 @@ const UploadForm = () => {
 
             let coverUrl: string;
 
-            if(data.coverImage) {
-                const coverFile = data.coverImage;
+            if(data.cover && data.cover.length > 0) {
+                const coverFile = data.cover[0];
                 const uploadedCoverBlob = await upload(`${fileTitle}_cover.png`, coverFile, {
                     access: 'public',
                     handleUploadUrl: '/api/upload',
@@ -103,7 +103,7 @@ const UploadForm = () => {
                 clerkId: userId,
                 title: data.title,
                 author: data.author,
-                persona: data.persona,
+                persona: data.voice,
                 fileURL: uploadedPdfBlob.url,
                 fileBlobKey: uploadedPdfBlob.pathname,
                 coverURL: coverUrl,
