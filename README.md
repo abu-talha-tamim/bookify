@@ -1,6 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
+Live Link: 
 
 First, run the development server:
 
@@ -13,24 +11,26 @@ pnpm dev
 # or
 bun dev
 ```
+Overview:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Bookify is a modern full-stack web application for uploading, parsing, and managing books. It integrates MongoDB for data storage, supports PDF processing, and uses Vercel Blob for file uploads.
+The system allows users to upload books, extract content, and manage structured data efficiently.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✨ Features
+📄 Upload PDF files with metadata
+🧠 Automatic PDF parsing and segmentation
+☁️ File storage using Vercel Blob
+🔐 Authentication with Clerk
+📦 MongoDB database integration
+⚡ Server Actions & API Routes
+✅ Form validation with Zod
+🔔 Toast notifications (Sonner)
+🎨 Clean UI with modern components
+🏗️ Tech Stack
+Frontend: Next.js, React, Tailwind CSS
+Backend: Next.js Server Actions, API Routes
+Database: MongoDB, Mongoose
+Auth: Clerk
+Storage: Vercel Blob
+Validation: Zod
+PDF Processing: pdfjs-dist
