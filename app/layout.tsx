@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, IBM_Plex_Serif, Mona_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Navber from "@/components/Navber";
+import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 
 const ibmPlexSans = IBM_Plex_Serif({
@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${ibmPlexSans.variable} ${monaSans.variable} antialiased`}
       >
         <ClerkProvider>
-          <Navber />
+          <Navbar />
           {children}
           <Toaster/>
         </ClerkProvider>

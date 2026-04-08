@@ -7,8 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-mona-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-ibm-plex-serif);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -151,7 +152,7 @@
   }
 
   .book-card-title {
-    @apply text-lg font-bold text-[#212a3b] line-clamp-1 font-(family-name:--font-ibm-plex-serif);
+    @apply text-lg font-bold text-[#212a3b] line-clamp-1 font-serif;
   }
 
   .book-card-author {
@@ -164,7 +165,7 @@
   }
 
   .form-label {
-    @apply text-lg font-semibold text-[#212a3b] font-(family-name:--font-ibm-plex-serif);
+    @apply text-lg font-semibold text-[#212a3b] font-serif;
   }
 
   .form-input {
@@ -184,6 +185,97 @@
   }
 
   .form-btn {
-    @apply h-16 w-full bg-[#663820] hover:bg-[#4d2a18] text-white rounded-2xl text-xl font-bold font-(family-name:--font-ibm-plex-serif) transition-all shadow-lg;
+    @apply h-16 w-full bg-[#663820] hover:bg-[#4d2a18] text-white rounded-2xl text-xl font-bold font-serif transition-all shadow-lg;
+  }
+
+  /* Book Page Styling */
+  .book-page-container {
+    @apply min-h-screen bg-[#faf3e0] p-6 flex flex-col items-center;
+  }
+
+  .back-btn-floating {
+    @apply fixed top-6 left-6 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center z-50 hover:bg-gray-50 transition-colors;
+  }
+
+  .vapi-header-card {
+    @apply w-full max-w-4xl bg-[#f5e6c8] rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-start md:items-center relative mb-8;
+  }
+
+  .vapi-book-cover-wrapper {
+    @apply relative w-[140px] h-[200px] rounded-lg overflow-visible shadow-lg shrink-0;
+  }
+
+  .vapi-book-cover {
+    @apply w-full h-full object-cover rounded-lg;
+  }
+
+  .vapi-mic-btn {
+    @apply absolute -bottom-3 -right-3 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-10;
+  }
+
+  .vapi-status-indicator {
+    @apply bg-white px-4 py-1.5 rounded-full flex items-center gap-2 text-sm font-medium text-[#3d485e];
+  }
+
+  .vapi-status-dot {
+    @apply w-2.5 h-2.5 rounded-full;
+  }
+
+  .vapi-status-dot-idle { @apply bg-[#94a3b8]; }
+  .vapi-status-dot-active { @apply bg-[#22c55e] animate-pulse; }
+  .vapi-status-dot-error { @apply bg-red-500; }
+
+  /* Transcript Styling */
+
+  .vapi-transcript-wrapper {
+    @apply mt-8 px-6 pb-12;
+  }
+
+  .transcript-container {
+    @apply bg-white rounded-[32px] border border-[#e5e7eb]/50 shadow-sm min-h-[400px] flex flex-col overflow-hidden;
+  }
+
+  .transcript-messages {
+    @apply flex-1 overflow-y-auto p-6 flex flex-col gap-4 scroll-smooth max-h-[600px];
+  }
+
+  .transcript-empty {
+    @apply flex-1 flex flex-col items-center justify-center p-12 text-center;
+  }
+
+  .transcript-empty-text {
+    @apply text-2xl font-bold text-[#212a3b] mb-2 font-serif;
+  }
+
+  .transcript-empty-hint {
+    @apply text-[#6b7280] max-w-xs;
+  }
+
+  .transcript-message {
+    @apply flex w-full;
+  }
+
+  .transcript-message-user {
+    @apply justify-end;
+  }
+
+  .transcript-message-assistant {
+    @apply justify-start;
+  }
+
+  .transcript-bubble {
+    @apply max-w-[80%] p-4 text-lg leading-relaxed shadow-sm;
+  }
+
+  .transcript-bubble-user {
+    @apply bg-[#663820] text-white rounded-2xl rounded-br-none;
+  }
+
+  .transcript-bubble-assistant {
+    @apply bg-[#f3e4c7] text-[#212a3b] rounded-2xl rounded-bl-none;
+  }
+
+  .transcript-cursor {
+    @apply inline-block w-2 h-5 bg-current ml-1 animate-pulse align-top;
   }
 }
