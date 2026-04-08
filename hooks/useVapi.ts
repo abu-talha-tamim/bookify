@@ -8,11 +8,14 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { toast } from "sonner";
 import { useAuth } from "@clerk/nextjs";
 import { startVoiceSession, endVoiceSession } from "@/lib/actions/session.action";
+import { useRouter } from "next/navigation";
 
 export type CallStatus = "idle" | "connecting" | "talking" | "listening" | "thinking" | "speaking";
 
 export function useVapi(book: IBook) {
   const { userId } = useAuth();
+  const router = useRouter();
+
   const [status, setStatus] = useState<CallStatus>("idle");
   const [messages, setMessages] = useState<Messages[]>([]);
   const [currentMessage, setCurrentMessage] = useState("");
@@ -28,6 +31,23 @@ export function useVapi(book: IBook) {
   const vapiRef = useRef<Vapi | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number | null>(null);
+
+  const stop = useCallback(() => {
+    if (vapiRef.current) {
+      vapiRef.current.stop();
+    }
+  }, []);
+
+  // Limit Monitoring - Moved after stop definition
+  useEffect(() => {
+    if (duration > maxDurationSeconds && status !== "idle") {
+      toast.info("Session limit reached for your plan. Redirecting...");
+      stop();
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
+    }
+  }, [duration, maxDurationSeconds, status, stop, router]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -80,6 +100,7 @@ export function useVapi(book: IBook) {
         if (role === "user") {
           if (transcriptType === "partial") {
             setCurrentUserMessage(transcript);
+            setStatus("listening");
           } else if (transcriptType === "final") {
             setCurrentUserMessage("");
             setStatus("thinking");
@@ -206,12 +227,6 @@ export function useVapi(book: IBook) {
       toast.error(error.message || "Failed to connect to voice assistant");
     }
   }, [book, userId]);
-
-  const stop = useCallback(() => {
-    if (vapiRef.current) {
-      vapiRef.current.stop();
-    }
-  }, []);
 
   const toggleCall = useCallback(() => {
     if (status === "idle") {
